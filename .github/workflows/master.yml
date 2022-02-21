@@ -10,7 +10,7 @@ on:
       version:
         description: 'Define version'
         required: true
-        default: $GITHUB_RUN_ID
+        default: ${{GITHUB_RUN_ID}}
 
 
 jobs:
