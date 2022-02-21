@@ -6,7 +6,7 @@
   "tagline": "Email",
   "version": "0.0.1",
   "healthCheckPath": "/",
-  "httpPort": 80,
+  "httpPort": 3000,
   "addons": {},
   "icon": "file://icon.png",
   "manifestVersion": 2,
