@@ -1,0 +1,16 @@
+{
+  "id": "co.uk.rossmac",
+  "title": "Mail Client",
+  "author": "Ross MacLean <ross@rossmac.co.uk>",
+  "description": "A Simple Email Client",
+  "tagline": "Email",
+  "version": "0.0.1",
+  "healthCheckPath": "/",
+  "httpPort": 80,
+  "addons": {},
+  "icon": "file://icon.png",
+  "manifestVersion": 2,
+  "website": "https://mail-client.rossmac.co.uk",
+  "contactEmail": "support@rossmac.co.uk",
+  "tags": [ "mail", "web" ]
+}

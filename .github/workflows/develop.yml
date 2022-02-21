@@ -2,13 +2,12 @@ name: Master CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 env:
   VERSION: ${GITHUB_SHA::7}
-  APP: mail-client
 
 jobs:
   build_push_image:
@@ -20,7 +19,7 @@ jobs:
       - run: docker build -t rossmaclean/$APP:$VERSION .
       - run: docker push rossmaclean/$APP:$VERSION
 
-  deploy_prod:
+  deploy_staging:
     needs: build_push_image
     runs-on: ubuntu-latest
     steps:
@@ -30,4 +29,4 @@ jobs:
         with:
           node-version: 15.x
       - run: npm i -g cloudron
-      - run: cloudron update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app $APP.rossmac.co.uk --image rossmaclean/$APP:$VERSION
+      - run: cloudron update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app $APP.staging.rossmac.co.uk --image rossmaclean/$APP:$VERSION
