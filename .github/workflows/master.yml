@@ -19,7 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: "echo Version: ${{ github.event.inputs.version }}"
-      - run: echo "Version
       - run: docker login --username rossmaclean --password ${{ secrets.DOCKERHUB_TOKEN }}
       - run: docker build -t rossmaclean/mail-client:${{ github.event.inputs.version }} .
       - run: docker push rossmaclean/mail-client:${{ github.event.inputs.version }}
