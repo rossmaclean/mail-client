@@ -7,7 +7,7 @@ on:
     branches: [ develop ]
 
 env:
-  VERSION: '${GITHUB_SHA::7}'
+  VERSION: ${{GITHUB_SHA::7}}
   APP: mail-client
 
 jobs:
