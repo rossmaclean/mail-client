@@ -1,0 +1,23 @@
+name: Master CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Define version'
+        required: true
+        default: $GITHUB_RUN_ID
+
+
+jobs:
+  build_push_image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker login --username rossmaclean --password ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker build -t rossmaclean/mail-client:${{ github.event.inputs.version }} .
+      - run: docker push rossmaclean/mail-client:${{ github.event.inputs.version }}
