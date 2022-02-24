@@ -1,6 +1,6 @@
 FROM node:alpine AS build-web
 WORKDIR /app
-COPY . .
+COPY ./web .
 RUN npm ci && npm run build
 
 FROM node:alpine AS build-api
@@ -14,6 +14,7 @@ RUN mkdir -p /app/code/api /app/code/web
 WORKDIR /app/code
 COPY --from=build-api /app/ /app/code/api
 COPY --from=build-web /app/dist/mail-reader /app/code/web
-COPY start.sh /app/code/start.sh
+
+COPY build/start.sh /app/code/start.sh
 
 CMD [ "/app/code/start.sh" ]

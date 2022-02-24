@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  mail-client:
+    container_name: mail-client
+    restart: "no"
+    image: rossmaclean/mail-client:5
+    ports:
+      - "3000:3000"

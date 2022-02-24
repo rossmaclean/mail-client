@@ -1,8 +1,0 @@
-version: '3.3'
-
-services:
-  mail-reader:
-    restart: "no"
-    image: rossmaclean/mail-reader:latest
-    ports:
-      - "3000:3000"
