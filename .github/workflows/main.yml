@@ -17,7 +17,7 @@ jobs:
       - uses: docker/setup-buildx-action@v1
       - run: "echo Version: ${GITHUB_SHA::7}"
       - run: docker login --username rossmaclean --password ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: docker build -f build/Dockerfile -t rossmaclean/$APP:${GITHUB_SHA::7} .
+      - run: DOCKER_BUILDKIT=1 docker build -f build/Dockerfile -t rossmaclean/$APP:${GITHUB_SHA::7} .
       - run: docker push rossmaclean/$APP:${GITHUB_SHA::7}
 
   deploy_staging:
