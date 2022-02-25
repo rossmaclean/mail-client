@@ -13,7 +13,7 @@ FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd1
 RUN mkdir -p /app/code/api /app/code/web
 WORKDIR /app/code
 COPY --from=build-api /app/ /app/code/api
-COPY --from=build-web /app/dist/mail-reader /app/code/web
+COPY --from=build-web /app/dist/mail-client /app/code/web
 
 COPY build/start.sh /app/code/start.sh
 
