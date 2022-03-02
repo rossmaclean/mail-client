@@ -1,9 +1,9 @@
-FROM node:alpine AS build-web
+FROM node:lts-gallium AS build-web
 WORKDIR /app
 COPY ./web .
 RUN npm ci && npm run build
 
-FROM node:alpine AS build-api
+FROM node:lts-gallium AS build-api
 WORKDIR /app
 COPY ./api .
 RUN npm ci
