@@ -3,6 +3,9 @@ kind: pipeline
 type: docker
 name: default
 
+platform:
+  arch: arm64
+
 steps:
   - name: docker build
     image: docker:dind
@@ -10,7 +13,7 @@ steps:
       - name: dockersock
         path: /var/run
     commands:
-      - docker buildx -t rossmaclean/mail-client:drone-test .
+      - DOCKER_BUILDKIT=1 docker build -t rossmaclean/mail-client:drone-test .
 
 volumes:
   - name: dockersock
